@@ -6,9 +6,29 @@ A set of scripts to generate GitLab Runners and deploy them on Clever Cloud
 
 These scripts are an experiment to easily create GitLab runners on Clever Cloud platform.
 
+### Runner scripts:
+
 > Currently, the first script is `gen-nodejs-runner.sh`, it generates a GitLab runner with nodejs installed
 
-> Stay tuned, soon other scripts 5Java, etc...)
+- `gen-nodejs-runner.sh` generates a GitLab runner (shell) for nodejs projects
+
+If you want to create your own script generator, you just need to change this part of the script: https://github.com/CleverCloud/gitlab-runner-generators/blob/master/gen-nodejs-runner.sh#L75
+
+```shell
+# Install gitlab-runner and nodejs
+RUN apt-get update && \\
+    apt-get install -y curl && \\
+    curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | bash  && \\
+    apt-get install -y gitlab-runner && \\
+    # ⚠️ From here you can add, change, ... everything you need 
+    curl -sL https://deb.nodesource.com/setup_9.x | bash  && \\
+    apt-get -y install nodejs && \\
+    echo "👋 🦊 Runner is installed" 
+CMD [ "/go.sh" ]
+EOF
+```
+
+> Stay tuned, soon other scripts (Java, etc...)
 
 ## Requirements
 
