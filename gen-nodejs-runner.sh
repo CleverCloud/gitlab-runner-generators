@@ -62,7 +62,9 @@ git init
 #
 cat > Dockerfile << EOF
 # Runner for a nodejs project
-FROM ubuntu:latest
+# FROM ubuntu:latest
+# It's better to fix the version of the distribution (early version could be not compliant with GL runner)
+FROM ubuntu:16.04
 
 COPY go.sh go.sh
 RUN chmod +x go.sh
