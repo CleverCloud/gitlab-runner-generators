@@ -66,7 +66,7 @@ RUNNER_NAME="nodejs-runner-demo" \
 REGISTRATION_TOKEN="xxx15n9__zZmpxh5678y" \
 CLEVER_TOKEN=1234567890abcdef \
 CLEVER_SECRET=abcdef123456789 \
-./gen-runner.sh
+./gen-nodejs-runner.sh
 ```
 
 - Wait for the deployment
